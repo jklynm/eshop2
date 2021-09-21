@@ -62,8 +62,25 @@ Route::get('/categoryCreate', [App\Http\Controllers\Admin\CategoryController::cl
 Route::post('/categoryStore', [App\Http\Controllers\Admin\CategoryController::class, 'store'])->name('category.store');
 Route::get('/categoryEdit/{category}', [App\Http\Controllers\Admin\CategoryController::class, 'edit'])->name('category.edit');
 Route::post('/categoryUpdate/{category}', [App\Http\Controllers\Admin\CategoryController::class, 'update'])->name('category.update');
-
 Route::get('/categoryDelete/{category}', [App\Http\Controllers\Admin\CategoryController::class, 'destroy'])->name('category.delete');
+
+Route::get('/product', [App\Http\Controllers\Admin\ProductController::class, 'index'])->name('product');
+Route::get('/productCreate', [App\Http\Controllers\Admin\ProductController::class, 'create'])->name('product.create');
+Route::post('/ProductStore', [App\Http\Controllers\Admin\ProductController::class, 'store'])->name('product.store');
+Route::get('/productEdit/{product}', [App\Http\Controllers\Admin\ProductController::class, 'edit'])->name('product.edit');
+Route::post('/productUpdate/{product}', [App\Http\Controllers\Admin\ProductController::class, 'update'])->name('product.update');
+Route::get('/productDelete/{product}', [App\Http\Controllers\Admin\ProductController::class, 'destroy'])->name('product.delete');
+
+
+
+Route::get('/changePassword', [App\Http\Controllers\Admin\UserController::class, 'user_change_password'])->name('user.getChangePassword');
+Route::post('/changePassword', [App\Http\Controllers\Admin\UserController::class, 'change_password'])->name('user.storeChangePassword');
+
+Route::get('/Password', function(){
+    return view('admin.user.changePassword');
+});
+
+
 
 
 

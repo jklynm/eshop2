@@ -10,6 +10,7 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{asset('admin/plugins/fontawesome-free/css/all.min.css')}}">
 @yield('datatablecss')
+@yield('additionalcss')
 <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css')}}">
     <!-- Tempusdominus Bootstrap 4 -->

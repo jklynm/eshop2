@@ -33,8 +33,8 @@ class RoleController extends Controller
     }
     public function edit($id)    {
         $permissions = Permission::all();
-        $roles = Role::where('id',$id)->with('permission')->first();
-        $checkedpermission = $roles->permission->pluck('id')->toArray();
+        $roles = Role::where('id',$id)->with('permissions')->first();
+        $checkedpermission = $roles->permissions->pluck('id')->toArray();
         return view('admin.role.edit',compact('roles','permissions','checkedpermission'));
     }
     public function update(Request $request,$id)
@@ -42,7 +42,7 @@ class RoleController extends Controller
         $roles = Role::where('id',$id)->first();
         $data = $request->except('_token');
         $roles->update($data);
-        $roles->permission()->sync($request->permission);
+        $roles->permissions()->sync($request->permission);
         return redirect()->route('role')->with('success','User Role updated successfully!');
     }
     public function destroy($id)    {

@@ -23,100 +23,147 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-key"></i>
+                        <i class="nav-icon fa fa-list-alt"></i>
                         <p>
                             CATEGORY
                             <i class="fas fa-angle-left right"></i>
-                            <span class="badge badge-info right">6</span>
+                            <span class="badge badge-info right">{{$categories->count()}}</span>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
+                        @php $user = Auth::user();@endphp
+
+                       @if($user->can('create-category'))
                         <li class="nav-item">
                             <a href="{{route('category.create')}}" class="nav-link">
                                 <i class="fas fa-plus-circle nav-icon"></i>
                                 <p>Create</p>
                             </a>
                         </li>
+                        @endif
+                        @if($user->can('view-category'))
                         <li class="nav-item">
                             <a href="{{route('category')}}" class="nav-link">
                                 <i class="fa fa-pen nav-icon"></i>
                                 <p>Manage</p>
                             </a>
                         </li>
+                        @endif
                     </ul>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-user-edit"></i>
+                        <i class="nav-icon fa fa-briefcase"></i>
                         <p>
-                            USER
+                            PRODUCT
                             <i class="fas fa-angle-left right"></i>
-                            <span class="badge badge-info right">6</span>
+                            <span class="badge badge-info right">{{$categories->count()}}</span>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{route('user.create')}}" class="nav-link">
-                                <i class="fas fa-plus-circle nav-icon"></i>
-                                <p>Create</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('user')}}" class="nav-link">
-                                <i class="fa fa-pen nav-icon"></i>
-                                <p>Manage</p>
-                            </a>
-                        </li>
+                        @php $user = Auth::user();@endphp
+
+                        @if($user->can('create-category'))
+                            <li class="nav-item">
+                                <a href="{{route('product.create')}}" class="nav-link">
+                                    <i class="fas fa-plus-circle nav-icon"></i>
+                                    <p>Create</p>
+                                </a>
+                            </li>
+                        @endif
+                        @if($user->can('view-category'))
+                            <li class="nav-item">
+                                <a href="{{route('product')}}" class="nav-link">
+                                    <i class="fa fa-pen nav-icon"></i>
+                                    <p>Manage</p>
+                                </a>
+                            </li>
+                        @endif
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-user-lock"></i>
-                        <p>
-                            ROLE
-                            <i class="fas fa-angle-left right"></i>
-                            <span class="badge badge-info right">6</span>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{route('role.create')}}" class="nav-link">
-                                <i class="fas fa-plus-circle nav-icon"></i>
-                                <p>Create</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('role')}}" class="nav-link">
-                                <i class="fa fa-pen nav-icon"></i>
-                                <p>Manage</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
+
+{{--               @if($user->can('manage-userroles'))--}}
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-user-edit"></i>
+                            <p>
+                                USER
+                                <i class="fas fa-angle-left right"></i>
+                                <span class="badge badge-info right">{{$users->count()}}</span>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('user.create')}}" class="nav-link">
+                                    <i class="fas fa-plus-circle nav-icon"></i>
+                                    <p>Create</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('user')}}" class="nav-link">
+                                    <i class="fa fa-pen nav-icon"></i>
+                                    <p>Manage</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-user-lock"></i>
+                            <p>
+                                ROLE
+                                <i class="fas fa-angle-left right"></i>
+                                <span class="badge badge-info right">{{$roles->count()}}</span>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('role.create')}}" class="nav-link">
+                                    <i class="fas fa-plus-circle nav-icon"></i>
+                                    <p>Create</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('role')}}" class="nav-link">
+                                    <i class="fa fa-pen nav-icon"></i>
+                                    <p>Manage</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-key"></i>
+                            <p>
+                                PERMISSION
+                                <i class="fas fa-angle-left right"></i>
+                                <span class="badge badge-info right">{{$permissions->count()}}</span>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('permission.create')}}" class="nav-link">
+                                    <i class="fas fa-plus-circle nav-icon"></i>
+                                    <p>Create</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('permission')}}" class="nav-link">
+                                    <i class="fa fa-pen nav-icon"></i>
+                                    <p>Manage</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                    <a href="{{route('user.getChangePassword')}}" class="nav-link">
                         <i class="nav-icon fas fa-key"></i>
                         <p>
-                            PERMISSION
-                            <i class="fas fa-angle-left right"></i>
-                            <span class="badge badge-info right">6</span>
+                            CHANGE PASSWORD
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{route('permission.create')}}" class="nav-link">
-                                <i class="fas fa-plus-circle nav-icon"></i>
-                                <p>Create</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('permission')}}" class="nav-link">
-                                <i class="fa fa-pen nav-icon"></i>
-                                <p>Manage</p>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
+{{--                @endif--}}
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

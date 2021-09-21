@@ -1,12 +1,15 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+use App\Models\Category;
 use \App\Models\User;
 
 use Illuminate\Http\Request;
 use \App\Http\Requests\User\StoreRequest;
+use \App\Http\Requests\User\ChangePasswordRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Role;
+use Validator;
 
 class UserController extends Controller
 {
@@ -57,4 +60,27 @@ class UserController extends Controller
         $users->delete();
         return redirect()->route('user');
     }
+
+    public function user_change_password()
+    {
+       return view('admin.user.changePassword');
+    }
+
+
+
+    public function change_password(ChangePasswordRequest $request){
+        $old_password  = auth()->user()->password;
+//        dd(bcrypt($request->oldpassword));
+//        dd($old_password);
+        if(bcrypt($request->oldpassword) != $old_password)
+       {
+           dd('return error');
+       } else{
+           auth()->user()->update(['password'=>bcrypt($request->newpassword)]);
+           dd('return sucess');
+       }
+
+    }
+
+
 }

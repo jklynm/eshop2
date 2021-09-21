@@ -28,17 +28,28 @@ class LoginController extends Controller
         }
         if(auth()->attempt(['email'=>$request->email,'password'=>$request->password]))
         {
-           $user = Auth::user();
-//           $user = auth()->user();
+            $user = Auth::user();
             session(['user_id'=>$user->id]);
             session(['email'=>$user->email]);
             session(['name'=>$user->name]);
-            $roles = $user->role();
+
+            $roles1 = $user->roles;
+            $roles = collect();
+            $permissions = collect();
+            foreach($roles1 as $rle)
+            {
+             $permissions->push($rle->permissions);
+             $roles->push($rle->id);
+            }
 //            dd($roles);
-//            foreach($user->role() as $rle)
-//            {
-//             dd($rle);
-//            }
+//            dd($permissions);
+            $access_permissions = [];
+            foreach($permissions->flatten(1) as $index=>$permission)
+            {
+                $access_permissions[] = $permission->guard_name;
+            }
+            session()->put('access_permissions',$access_permissions);
+            session()->put('roles',$roles);
            return  redirect()->route('dashboard');
         }else{
             return redirect()->route('login');
