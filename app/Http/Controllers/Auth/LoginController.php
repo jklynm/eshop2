@@ -11,6 +11,11 @@ use Session;
 class LoginController extends Controller
 {
     use AuthenticatesUsers;
+
+    public function  __construct()
+    {
+        $this->middleware('guest:web')->except('logout');
+    }
     public function index(){
         return view('auth.login');
     }
@@ -18,13 +23,14 @@ class LoginController extends Controller
        $this->guard()->logout();
        $request->session()->flush();
        $request->session()->regenerate();
-       return redirect('login');
+       return redirect('admin/login');
 
     }
     public function login(Request $request){
         if(session()->has('email') && session()->has('name'))
         {
-            return redirect('dashboard');
+//            return redirect('admin/dashboard');
+            return redirect()->route('dashboard');
         }
         if(auth()->attempt(['email'=>$request->email,'password'=>$request->password]))
         {

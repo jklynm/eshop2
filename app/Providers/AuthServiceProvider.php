@@ -46,7 +46,13 @@ class AuthServiceProvider extends ServiceProvider
             $view->with('categories',  \App\Models\Category::all());
         });
         View::composer('layout.admin.partials.sidebar', function ($view) {
+            $view->with('users',  \App\Models\User::all());
+        });
+        View::composer('layout.admin.partials.sidebar', function ($view) {
             $view->with('categories',  \App\Models\Category::all());
+        });
+        View::composer('layout.admin.partials.sidebar', function ($view) {
+            $view->with('products',  \App\Models\Product::all());
         });
         View::composer('layout.admin.partials.sidebar', function ($view) {
             $view->with('users',  \App\Models\User::all());
@@ -56,6 +62,10 @@ class AuthServiceProvider extends ServiceProvider
         });
         View::composer('layout.admin.partials.sidebar', function ($view) {
             $view->with('permissions',  \App\Models\Permission::all());
+        });
+        View::composer('layout.frontend.partials.header', function ($view) {
+            $view->with('categories',  \App\Models\Category::all())
+            ->with('configration',  \App\Models\SiteConfigration::first());
         });
     }
 }

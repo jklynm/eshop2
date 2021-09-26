@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use \App\Models\Category;
 use Illuminate\Http\Request;
 use \App\Http\Requests\Category\StoreRequest;
+use \App\Http\Requests\Category\UpdateRequest;
 use App\Http\Controllers\Controller;
 class CategoryController extends Controller
 {
@@ -16,7 +17,38 @@ class CategoryController extends Controller
 
     public function create()
     {
-        return view('admin.category.create');
+
+        $categories = $this->getCategoryListDropDown();
+        return view('admin.category.create',compact('categories'));
+    }
+
+
+    public function  getCategoryListDropDown()
+    {
+        $categories = Category::where('parent_id',0)->get();
+        $selectBox = '';
+        foreach ($categories as $category)
+        {
+            $selectBox .= '<option value = "'.$category->id.'">'.$category->title.'</option>';
+            $selectBox .= $this->getSubCategoryListDropDown($category);
+        }
+        return $selectBox;
+    }
+
+    public function getSubCategoryListDropDown($category,$level=1)
+    {
+        $selectBox = '';
+        if($category->subCategories)
+        {
+             $level++;
+            foreach ($category->subCategories as $subCategory)
+            {
+                $title = str_repeat('-',$level).$subCategory->title;
+                $selectBox .= '<option value = "'.$subCategory->id.'">'.$title.'</option>';
+                $selectBox .= $this->getSubCategoryListDropDown($subCategory,$level);
+            }
+            return $selectBox;
+        }
     }
 
     public function store(StoreRequest $request)
@@ -35,10 +67,11 @@ class CategoryController extends Controller
     {
         $category = Category::where('id',$id)->first();
 //        $category = Category::where('slug',$slug)->first();
-        return view('admin.category.edit',compact('category'));
+        $categories = $this->getCategoryListDropDown();
+        return view('admin.category.edit',compact('category','categories'));
     }
 
-    public function update(Request $request,$id)
+    public function update(UpdateRequest $request,$id)
     {
         $category = Category::where('id',$id)->first();
         $data = $request->except('_token','status');

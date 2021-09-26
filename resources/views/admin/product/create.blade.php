@@ -46,7 +46,8 @@
                                 <form method="post" action="{{route('product.store')}}" enctype="multipart/form-data">
                                     @csrf
                                     <div class="card-body">
-                                        <div class="form-group">
+                                        <div class="row cardform">
+                                            <div class="col-md-6">
                                             <label>Select Category</label>
                                             <select class="form-control" name="category_id" required="">
                                                 @foreach($categories as $key=>$value)
@@ -54,13 +55,18 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <div class="row cardform">
                                             <div class="col-md-6">
-                                            <label for="exampleInputName">Product Title</label>
+                                                <label for="exampleInputName">Product Title</label>
                                                 <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" placeholder="Product Title">
                                                 @error('title')
                                                 <div class="alert alert-danger">{{ $message }}</div>
                                                 @enderror
+                                            </div>
+                                        </div>
+                                        <div class="row cardform">
+                                            <div class="col-md-6">
+                                                <label for="exampleInputName">Product Subtitle</label>
+                                                <input type="text" class="form-control" name="subtitle" placeholder="Product Subtitle">
                                             </div>
                                             <div class="col-md-6">
                                             <label for="exampleInputEmail1">Product Code</label>
@@ -74,7 +80,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="exampleInputEmail1">Product Offer Price</label>
-                                                <input type="number" class="form-control  name="offer" placeholder="Enter Product Offer Price">
+                                                <input type="number" class="form-control  name="offer_price" placeholder="Enter Product Offer Price">
                                             </div>
                                         </div>
                                         <div class="row cardform">
@@ -96,7 +102,7 @@
 
                                         <div class="form-group">
                                             <label for="exampleInputImage">Image</label>
-                                            <input type="file" class="form-control"  name="image" placeholder="Enter Image">
+                                            <input type="file" class="form-control"  name="image" >
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputStatus">Status</label> <br>

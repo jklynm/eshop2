@@ -56,13 +56,24 @@
             </div><!-- /.container-fluid -->
         </section>
         @include('layout.alert')
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- left column -->
+                    <div class="col-md-12">
+                        <!-- general form elements -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Manage Products &nbsp; &nbsp; <a href="{{route('product.create')}}"><button class="btn btn-success"><i class="fa fa-plus"></i> Add Product</button></a></h3>
+                            </div>
         <div class="card-body">
             <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                     <th>S.No.</th>
-{{--                    <th>Category</th>--}}
+                    <th>Category</th>
                     <th>Title</th>
+                    <th>Image</th>
                     <th>Description</th>
                     <th>Status</th>
                     <th>Action</th>
@@ -72,8 +83,14 @@
                 @foreach($products as $index=>$val)
                     <tr>
                         <td>{{$index+1}}</td>
-{{--                        <td>{{$val->category->title}} </td>--}}
+                        <td>{{$val->category->title}} </td>
                         <td>{{$val->title}}</td>
+                        <td>
+                        @if(file_exists('storage/'.$val->image) && $val->image !== '' && $val->image !== null)
+                            <img src="{{asset('storage/'.$val->image)}}" height="70" width="70" style="border:solid 1px #ddd">
+                        @else
+                            <img src="{{asset('frontend/images/dummy.jpg')}}" height="70" width="70" style="border:solid 1px #ddd">
+                        @endif</td>
                         <td>{{$val->description}}</td>
                         <td> @if($val->status == 0)
                                 <button class="btn btn-danger">Disable</button>
@@ -87,8 +104,9 @@
                 <tfoot>
                 <tr>
                     <th>S.N.</th>
-{{--                    <th>Category</th>--}}
+                    <th>Category</th>
                     <th>Title</th>
+                    <th>Image</th>
                     <th>Description</th>
                     <th>Status</th>
                     <th>Action</th>
@@ -96,6 +114,17 @@
                 </tfoot>
             </table>
         </div>
+                            <!-- /.card-body -->
+                        </div>
+
+                        <!-- /.card -->
+                    </div>
+                    <!--/.col (right) -->
+                </div>
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
     </div>
     @foreach($products as $index=>$val)
         <div class="modal fade" id="exampleModal-{{$index}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

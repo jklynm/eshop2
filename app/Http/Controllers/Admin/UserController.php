@@ -70,14 +70,16 @@ class UserController extends Controller
 
     public function change_password(ChangePasswordRequest $request){
         $old_password  = auth()->user()->password;
-//        dd(bcrypt($request->oldpassword));
-//        dd($old_password);
-        if(bcrypt($request->oldpassword) != $old_password)
+
+        $oldpass = ($request->oldpassword);
+
+
+        if($oldpass != $old_password)
        {
            dd('return error');
        } else{
            auth()->user()->update(['password'=>bcrypt($request->newpassword)]);
-           dd('return sucess');
+           dd('return success');
        }
 
     }

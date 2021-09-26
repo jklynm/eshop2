@@ -6,10 +6,11 @@
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="dashboard" class="nav-link">Home</a>
+             <a href="dashboard" class="nav-link"> <i class="fa fa-home"></i> Home</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Contact</a>
+{{--            <a href="{{route('layout.frontend.master')}}" target="_new" class="nav-link">View Site</a>--}}
+             <a href="{{route('frontend.index')}}" target="_new" class="nav-link"> <i class="fa fa-eye"></i> View Site</a>
         </li>
     </ul>
 

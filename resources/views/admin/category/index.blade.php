@@ -67,6 +67,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Title</th>
+                        <th>Parent</th>
                         <th>Subtitle</th>
                         <th>Status</th>
                         <th>Action</th>
@@ -77,6 +78,8 @@
                         <tr>
                             <td>{{$index+1}}</td>
                             <td>{{$val->title}}
+                            <td>{{$val->parent->title ?? ""}}
+
                             </td>
                             <td>{{$val->subtitle}}</td>
                             <td>@if($val->status == 0)

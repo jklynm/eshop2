@@ -46,18 +46,27 @@
                             <form method="post" action="{{route('product.update',$product->id)}}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="card-body">
-                                    <div class="form-group">
-                                        <label>Select Category</label>
-                                        <select class="form-control" name="category_id" required="">
-                                            @foreach($categories as $key=>$value)
-                                                <option value="{{$value->id}}">{{$value->title}}</option>
-                                            @endforeach
-                                        </select>
+                                    <div class="row cardform">
+                                        <div class="col-md-6">
+                                            <label>Select Category</label>
+                                            <select class="form-control" name="category_id"  required="">
+                                                @foreach($categories as $key=>$value)
+                                                    <option value="{{$value->id}}" @if($product->category_id == $value->id) selected="selected" @endif>{{$value->title}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="exampleInputName">Product Title</label>
+                                            <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" placeholder="Product Title" value="{{$product->title}}">
+                                            @error('title')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
                                     </div>
                                     <div class="row cardform">
                                         <div class="col-md-6">
-                                            <label for="exampleInputName">Product Title</label>
-                                            <input type="text" class="form-control" name="title" placeholder="Enter Product Title" value="{{$product->title}}">
+                                            <label for="exampleInputName">Product Subtitle</label>
+                                            <input type="text" class="form-control" name="subtitle" placeholder="Enter Product SubTitle" value="{{$product->subtitle}}">
                                         </div>
                                         <div class="col-md-6">
                                             <label for="exampleInputEmail1">Product Code</label>
@@ -71,7 +80,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <label for="exampleInputEmail1">Product Offer Price</label>
-                                            <input type="number" class="form-control  name="offer_text" placeholder="Enter Product Offer Price" value="{{$product->offer}}">
+                                            <input type="number" class="form-control  name="offer_price" placeholder="Enter Product Offer Price" value="{{$product->offer_price}}">
                                         </div>
                                     </div>
                                     <div class="row cardform">
@@ -89,12 +98,17 @@
                                         <textarea name="description"  class="form-control"  id="" cols="30" rows="10">{{$product->description}}</textarea>
 
                                     </div>
-
-
-
                                     <div class="form-group">
-                                        <label for="exampleInputImage">Image</label>
-                                        <input type="file" class="form-control"  name="image" placeholder="Enter Image">
+                                        <label for="image">Product Image</label>
+                                        <input type="file" class="form-control" name="image">
+                                        @if(file_exists('storage/'.$product->image) && $product->image !== '' && $product->image !== null)
+                                            <img src="{{asset('storage/'.$product->image)}}" height="80">
+
+                                        @else
+                                            <img src="{{asset('frontend/images/dummy.jpg')}}" style="border:solid 1px #ddd;">
+
+                                        @endif
+
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputStatus">Status</label> <br>

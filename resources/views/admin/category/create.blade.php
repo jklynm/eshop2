@@ -26,7 +26,7 @@
                         <!-- general form elements -->
                         <div class="card card-primary">
                             <div class="card-header" style="background: #fff;color:#333">
-                                <h3 class="card-title">Add New Category &nbsp; &nbsp; <a href="{{route('category')}}"><button class="btn btn-success"><i class="fa fa-pen"></i> Manage Category</button></a></h3>
+                                <h3 class="card-title">Add New Category &nbsp; &nbsp; <a href="{!! route('category') !!}"><button class="btn btn-success"><i class="fa fa-pen"></i> Manage Category</button></a></h3>
                             </div>
                         @include('layout.alert')
                             <!-- /.card-header -->
@@ -35,6 +35,13 @@
                                 <form method="post" action="{{route('category.store')}}" enctype="multipart/form-data">
                                     @csrf
                                     <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="exampleInputParent">Parent</label>
+                                            <select name="parent_id" class="form-control">
+                                                <option value="0">Select Itself</option>
+                                                {!! $categories !!}
+                                            </select>
+                                        </div>
                                         <div class="form-group">
                                             <label for="exampleInputName">Title</label>
                                             <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" placeholder="Enter Title">

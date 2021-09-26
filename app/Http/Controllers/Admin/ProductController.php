@@ -11,14 +11,21 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    public function __construct()
+    {
+        $this->destinationPath = "Products";
+    }
     public function create(){
         $categories = Category::where('status',1)->orderBy('id', 'DESC')->get();
         return view('admin.product.create',compact('categories'));
-
     }
     public function store(StoreRequest $request)
     {
         $data = $request->except('_token','image');
+        if($request->file('image'))
+        {
+            $data['image'] = $request->file('image')->storeAs($this->destinationPath,time().'.'.$request->file('image')->getClientOriginalExtension());
+        }
         $product = Product::create($data);
         if($product){
             return redirect()->route('product')->with('success','Product created Successfully!');
@@ -32,18 +39,24 @@ class ProductController extends Controller
     }
     public function edit($id)
     {
-        $categories = Category::where('status',1)->orderBy('id', 'DESC')->get();
+        $categories = Category::where('status',1)->get();
         $product = Product::where('id',$id)->first();
         return view('admin.product.edit',compact('product', 'categories'));
     }
-
     public function update(Request $request,$id)
     {
         $product = Product::where('id',$id)->first();
         $data = $request->except('_token','image');
+        if($request->file('image'))
+        {
+            $data['image'] = $request->file('image')->storeAs($this->destinationPath,time().'.'.$request->file('image')->getClientOriginalExtension());
+        }
+        if(file_exists($this->destinationPath))
+        {
+            unlink($this->destinationPath);
+        }
         $product->update($data);
         return redirect()->route('product')->with('success','Item updated successfully!');
-
     }
     public function destroy($id)
     {
