@@ -40,3 +40,10 @@
             @endforeach
     </div> <!-- slide -->
 </div><!-- block slide top -->
+<!-- banner -->
+<div class="banner-slide">
+    @foreach($sliderthumb as $index=>$thumb)
+        <a href="" class="box-img"><img src="{{asset('storage/'.$thumb->image)}}" alt="banner-slide"></a>
+    @endforeach
+    {{--                    <a href="" class="box-img"><img src="{{asset('frontend/images/media/index1/banner-slide2.jpg')}}" alt="banner-slide"></a>--}}
+</div><!-- banner -->

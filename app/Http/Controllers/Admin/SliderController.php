@@ -36,10 +36,30 @@ class SliderController extends Controller
         $sliders = Slider::all();
         return view('admin.slider.index', compact('sliders'));
     }
-    public function edit(Request $request, $id)
+    public function edit($id)
     {
         $sliders = Slider::where('id',$id)->first();
         return view('admin.slider.edit', compact('sliders'));
-
+    }
+    public function update(Request $request,$id)
+    {
+        $sliders = Slider::where('id',$id)->first();
+        $data = $request->except('_token','image');
+        if($request->file('image'))
+        {
+            $data['image'] = $request->file('image')->storeAs($this->destinationPath,time().'.'.$request->file('image')->getClientOriginalExtension());
+        }
+        if(file_exists($this->destinationPath))
+        {
+            unlink($this->destinationPath);
+        }
+        $sliders->update($data);
+        return redirect()->route('slider.index')->with('success','Slider updated successfully!');
+    }
+    public function destroy($id)
+    {
+        $slider = Slider::where('id',$id)->first();
+        $slider->delete();
+        return redirect()->route('slider.index');
     }
 }

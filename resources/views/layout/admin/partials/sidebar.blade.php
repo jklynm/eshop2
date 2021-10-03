@@ -103,6 +103,14 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <a href="{{route('contact.index')}}" class="nav-link">
+                        <i class="nav-icon fas fa-phone"></i>
+                        <p>
+                            CONTACTS
+                        </p>
+                    </a>
+                </li>
 
 {{--               @if($user->can('manage-userroles'))--}}
                     <li class="nav-item">

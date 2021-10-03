@@ -26,39 +26,38 @@
                         <!-- general form elements -->
                         <div class="card card-primary">
                             <div class="card-header" style="background: #fff;color:#333">
-                                <h3 class="card-title">Edit Slider &nbsp; &nbsp; <a href="{{route('slider.index')}}"><button class="btn btn-success"><i class="fa fa-plus-circle"></i> Add Slider</button></a></h3>
-                            </div>
-                        @include('layout.alert')
-                        <!-- /.card-header -->
                             <!-- form start -->
                             <div class="class col-md-6">
-                                <form method="post" action="{{route('slider.store')}}" enctype="multipart/form-data">
+                                <form method="post" action="{{route('slider.update',$sliders->id)}}" enctype="multipart/form-data">
                                     @csrf
                                     <div class="card-body">
-
                                         <div class="form-group">
                                             <label for="exampleInputName">Title</label>
-                                            <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" placeholder="Enter Title">
-                                            @error('title')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                            @enderror
+                                            <input type="text" class="form-control" name="title" placeholder="Enter Title" value="{{$sliders->title}}">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputName">Caption</label>
-                                            <input type="text" class="form-control" name="caption" placeholder="Enter Subtitle">
+                                            <input type="text" class="form-control" name="caption" placeholder="Enter Subtitle" value="{{$sliders->caption}}">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputContact">Rank</label>
-                                            <input type="number" class="form-control"  name="rank" placeholder="Enter Rank Number">
+                                            <input type="number" class="form-control"  name="rank" placeholder="Enter Rank Number" value="{{$sliders->rank}}">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputImage">Slider Image</label>
                                             <input type="file" class="form-control"  name="image" placeholder="Enter Image">
+                                            @if(file_exists('storage/'.$sliders->image) && $sliders->image !== '' && $sliders->image !== null)
+                                                <img src="{{asset('storage/'.$sliders->image)}}" height="80">
+
+                                            @else
+                                                <img src="{{asset('frontend/images/dummy.jpg')}}" style="border:solid 1px #ddd;">
+
+                                            @endif
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputStatus">Status</label> <br>
-                                            <input type="radio" name="status" value="1" checked> Enable
-                                            <input type="radio"  name="status" value="0"> Disable
+                                            <input type="radio" name="status" value="1" {{ ($sliders->status=="1")? "checked" : "" }}> Enable
+                                            <input type="radio"  name="status" value="0" {{ ($sliders->status=="0")? "checked" : "" }} > Disable
                                         </div>
 
                                     </div>

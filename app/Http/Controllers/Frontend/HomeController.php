@@ -17,8 +17,9 @@ class HomeController extends Controller
     public function home(){
         $categories = Category::where('status',1)->get();
         $sliders = Slider::where('status',1)->take(3)->orderBy('id','desc')->get();
-//        dd($configrations);
-        return view('frontend.index', compact('categories', 'sliders'));
+        $sliderthumb = Slider::where('status',1)->offset(3)->limit(2)->orderBy('id','desc')->get();
+        $products = Product::where('status',1)->take(3)->orderBy('id','desc')->get();
+        return view('frontend.index', compact('categories', 'sliders','sliderthumb','products'));
     }
 
     public function contact()

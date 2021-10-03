@@ -234,66 +234,66 @@
                                     Kids & Toys
                                 </a>
                             </li>
-                            <li>
-                                <a href="">
-                                    <span class="icon"><img src="{{asset('frontend/images/icon/index1/nav-cat5.png')}}" alt="nav-cat"></span>
-                                    Groceries & Pets
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <span class="icon"><img src="{{asset('frontend/images/icon/index1/nav-cat6.png')}}" alt="nav-cat"></span>
-                                    Decor & Lifestyle
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <span class="icon"><img src="{{asset('frontend/images/icon/index1/nav-cat7.png')}}" alt="nav-cat"></span>
-                                    Women's Ware
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <span class="icon"><img src="{{asset('frontend/images/icon/index1/nav-cat8.png')}}" alt="nav-cat"></span>
-                                    Men's Ware
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <span class="icon"><img src="{{asset('frontend/images/icon/index1/nav-cat9.png')}}" alt="nav-cat"></span>
-                                    Fitness & Sports
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <span class="icon"><img src="{{asset('frontend/images/icon/index1/nav-cat10.png')}}" alt="nav-cat"></span>
-                                    Automotive & Motorbike
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <span class="icon"><img src="{{asset('frontend/images/icon/index1/nav-cat11.png')}}" alt="nav-cat"></span>
-                                    Outdoors
-                                </a>
-                            </li>
-                            <li class="cat-link-orther">
-                                <a href="">
-                                    <span class="icon"><img src="{{asset('frontend/images/icon/index1/nav-cat10.png')}}" alt="nav-cat"></span>
-                                    Daily Consume
-                                </a>
-                            </li>
-                            <li class="cat-link-orther">
-                                <a href="">
-                                    <span class="icon"><img src="{{asset('frontend/images/icon/index1/nav-cat9.png')}}" alt="nav-cat"></span>
-                                    Kitchen Items
-                                </a>
-                            </li>
-                            <li class="cat-link-orther">
-                                <a href="">
-                                    <span class="icon"><img src="{{asset('frontend/images/icon/index1/nav-cat8.png')}}" alt="nav-cat"></span>
-                                    Other
-                                </a>
-                            </li>
+{{--                            <li>--}}
+{{--                                <a href="">--}}
+{{--                                    <span class="icon"><img src="{{asset('frontend/images/icon/index1/nav-cat5.png')}}" alt="nav-cat"></span>--}}
+{{--                                    Groceries & Pets--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                            <li>--}}
+{{--                                <a href="">--}}
+{{--                                    <span class="icon"><img src="{{asset('frontend/images/icon/index1/nav-cat6.png')}}" alt="nav-cat"></span>--}}
+{{--                                    Decor & Lifestyle--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                            <li>--}}
+{{--                                <a href="">--}}
+{{--                                    <span class="icon"><img src="{{asset('frontend/images/icon/index1/nav-cat7.png')}}" alt="nav-cat"></span>--}}
+{{--                                    Women's Ware--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                            <li>--}}
+{{--                                <a href="">--}}
+{{--                                    <span class="icon"><img src="{{asset('frontend/images/icon/index1/nav-cat8.png')}}" alt="nav-cat"></span>--}}
+{{--                                    Men's Ware--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                            <li>--}}
+{{--                                <a href="">--}}
+{{--                                    <span class="icon"><img src="{{asset('frontend/images/icon/index1/nav-cat9.png')}}" alt="nav-cat"></span>--}}
+{{--                                    Fitness & Sports--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                            <li>--}}
+{{--                                <a href="">--}}
+{{--                                    <span class="icon"><img src="{{asset('frontend/images/icon/index1/nav-cat10.png')}}" alt="nav-cat"></span>--}}
+{{--                                    Automotive & Motorbike--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                            <li>--}}
+{{--                                <a href="">--}}
+{{--                                    <span class="icon"><img src="{{asset('frontend/images/icon/index1/nav-cat11.png')}}" alt="nav-cat"></span>--}}
+{{--                                    Outdoors--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                            <li class="cat-link-orther">--}}
+{{--                                <a href="">--}}
+{{--                                    <span class="icon"><img src="{{asset('frontend/images/icon/index1/nav-cat10.png')}}" alt="nav-cat"></span>--}}
+{{--                                    Daily Consume--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                            <li class="cat-link-orther">--}}
+{{--                                <a href="">--}}
+{{--                                    <span class="icon"><img src="{{asset('frontend/images/icon/index1/nav-cat9.png')}}" alt="nav-cat"></span>--}}
+{{--                                    Kitchen Items--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                            <li class="cat-link-orther">--}}
+{{--                                <a href="">--}}
+{{--                                    <span class="icon"><img src="{{asset('frontend/images/icon/index1/nav-cat8.png')}}" alt="nav-cat"></span>--}}
+{{--                                    Other--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
                         </ul>
                         <div class="view-all-categori">
                             <a  class="open-cate btn-view-all">All Categories</a>
@@ -302,11 +302,6 @@
                 </div><!-- categori -->
                 <!-- block slide top -->
                 @include('frontend.partials.slider')
-                <!-- banner -->
-                <div class="banner-slide">
-                    <a href="" class="box-img"><img src="{{asset('frontend/images/media/index1/banner-slide1.jpg')}}" alt="banner-slide"></a>
-                    <a href="" class="box-img"><img src="{{asset('frontend/images/media/index1/banner-slide2.jpg')}}" alt="banner-slide"></a>
-                </div><!-- banner -->
             </div>
         </div>
     </div>
@@ -361,13 +356,13 @@
                     <div class="block-title">
                         <ul class="nav" role="tablist">
                             <li role="presentation" class="active">
-                                <a href="#tabproduct1"  role="tab" data-toggle="tab">best SELLERS </a>
+                                <a href="#tabproduct1"  role="tab" data-toggle="tab">NEW PRODUCTS </a>
                             </li>
                             <li role="presentation">
                                 <a href="#tabproduct2" role="tab" data-toggle="tab">ON SALE</a>
                             </li>
                             <li role="presentation">
-                                <a href="#tabproduct3"  role="tab" data-toggle="tab">NEW PRODUCTS</a>
+                                <a href="#tabproduct3"  role="tab" data-toggle="tab">best SELLERS</a>
                             </li>
                         </ul>
                     </div>
@@ -385,10 +380,17 @@
                                         "768":{"items":3},
                                         "992":{"items":3}
                                     }'>
+                                @foreach ($products as $product)
                                 <div class="product-item  product-item-opt-1 ">
                                     <div class="product-item-info">
                                         <div class="product-item-photo">
-                                            <a class="product-item-img" href=""><img alt="product name" src="{{asset('frontend/images/media/index1/sellers1.jpg')}}"></a>
+                                            <a class="product-item-img" href="">
+                                                @if(file_exists('storage/'.$product->image) && $product->image !== '' && $product->image !== null)
+                                                <img alt="{{$product->title}}" src="{{asset('storage/'.$product->image)}}" >
+                                                @else
+                                                    <img src="{{asset('frontend/images/dummy.jpg')}}" height="320">
+                                                @endif
+                                            </a>
                                             <div class="product-item-actions">
                                                 <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
                                                 <a class="btn btn-compare" href=""><span>compare</span></a>
@@ -398,18 +400,18 @@
                                             <span class="product-item-label label-price">30% <span>off</span></span>
                                         </div>
                                         <div class="product-item-detail">
-                                            <strong class="product-item-name"><a href="">Maecenas consequat mauris</a></strong>
+                                            <strong class="product-item-name"><a href="">{{$product->title}}</a></strong>
                                             <div class="clearfix">
                                                 <div class="product-item-price">
-                                                    <span class="price">$45.00</span>
+                                                    <span class="price">{{$product->price}}</span>
                                                     <span class="old-price">$52.00</span>
                                                 </div>
                                                 <div class="product-reviews-summary">
                                                     <div class="rating-summary">
                                                         <div title="80%" class="rating-result">
-                                                                    <span style="width:80%">
-                                                                        <span><span>80</span>% of <span>100</span></span>
-                                                                    </span>
+                                                            <span style="width:80%">
+                                                                <span><span>80</span>% of <span>100</span></span>
+                                                            </span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -417,6 +419,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endforeach
                                 <div class="product-item  product-item-opt-1 ">
                                     <div class="product-item-info">
                                         <div class="product-item-photo">
@@ -448,97 +451,97 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="product-item  product-item-opt-1 ">
-                                    <div class="product-item-info">
-                                        <div class="product-item-photo">
-                                            <a class="product-item-img" href=""><img alt="product name" src="{{asset('frontend/images/media/index1/sellers3.jpg')}}"></a>
-                                            <div class="product-item-actions">
-                                                <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
-                                                <a class="btn btn-compare" href=""><span>compare</span></a>
-                                                <a class="btn btn-quickview" href=""><span>quickview</span></a>
-                                            </div>
-                                            <button type="button" class="btn btn-cart"><span>Add to Cart</span></button>
-                                        </div>
-                                        <div class="product-item-detail">
-                                            <strong class="product-item-name"><a href="">Maecenas consequat mauris</a></strong>
-                                            <div class="clearfix">
-                                                <div class="product-item-price">
-                                                    <span class="price">$45.00</span>
-                                                </div>
-                                                <div class="product-reviews-summary">
-                                                    <div class="rating-summary">
-                                                        <div title="80%" class="rating-result">
-                                                                    <span style="width:80%">
-                                                                        <span><span>80</span>% of <span>100</span></span>
-                                                                    </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-item  product-item-opt-1 ">
-                                    <div class="product-item-info">
-                                        <div class="product-item-photo">
-                                            <a class="product-item-img" href=""><img alt="product name" src="{{asset('frontend/images/media/index1/sellers2.jpg')}}"></a>
-                                            <div class="product-item-actions">
-                                                <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
-                                                <a class="btn btn-compare" href=""><span>compare</span></a>
-                                                <a class="btn btn-quickview" href=""><span>quickview</span></a>
-                                            </div>
-                                            <button type="button" class="btn btn-cart"><span>Add to Cart</span></button>
-                                        </div>
-                                        <div class="product-item-detail">
-                                            <strong class="product-item-name"><a href="">Maecenas consequat mauris</a></strong>
-                                            <div class="clearfix">
-                                                <div class="product-item-price">
-                                                    <span class="price">$45.00</span>
-                                                </div>
-                                                <div class="product-reviews-summary">
-                                                    <div class="rating-summary">
-                                                        <div title="80%" class="rating-result">
-                                                                    <span style="width:80%">
-                                                                        <span><span>80</span>% of <span>100</span></span>
-                                                                    </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-item  product-item-opt-1 ">
-                                    <div class="product-item-info">
-                                        <div class="product-item-photo">
-                                            <a class="product-item-img" href=""><img alt="product name" src="{{asset('frontend/images/media/index1/sellers3.jpg')}}"></a>
-                                            <div class="product-item-actions">
-                                                <a class="btn btn-wishlist" href=""><span>wishlist</span></a>
-                                                <a class="btn btn-compare" href=""><span>compare</span></a>
-                                                <a class="btn btn-quickview" href=""><span>quickview</span></a>
-                                            </div>
-                                            <button type="button" class="btn btn-cart"><span>Add to Cart</span></button>
-                                        </div>
-                                        <div class="product-item-detail">
-                                            <strong class="product-item-name"><a href="">Maecenas consequat mauris</a></strong>
-                                            <div class="clearfix">
-                                                <div class="product-item-price">
-                                                    <span class="price">$45.00</span>
-                                                </div>
-                                                <div class="product-reviews-summary">
-                                                    <div class="rating-summary">
-                                                        <div title="80%" class="rating-result">
-                                                                    <span style="width:80%">
-                                                                        <span><span>80</span>% of <span>100</span></span>
-                                                                    </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+{{--                                <div class="product-item  product-item-opt-1 ">--}}
+{{--                                    <div class="product-item-info">--}}
+{{--                                        <div class="product-item-photo">--}}
+{{--                                            <a class="product-item-img" href=""><img alt="product name" src="{{asset('frontend/images/media/index1/sellers3.jpg')}}"></a>--}}
+{{--                                            <div class="product-item-actions">--}}
+{{--                                                <a class="btn btn-wishlist" href=""><span>wishlist</span></a>--}}
+{{--                                                <a class="btn btn-compare" href=""><span>compare</span></a>--}}
+{{--                                                <a class="btn btn-quickview" href=""><span>quickview</span></a>--}}
+{{--                                            </div>--}}
+{{--                                            <button type="button" class="btn btn-cart"><span>Add to Cart</span></button>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="product-item-detail">--}}
+{{--                                            <strong class="product-item-name"><a href="">Maecenas consequat mauris</a></strong>--}}
+{{--                                            <div class="clearfix">--}}
+{{--                                                <div class="product-item-price">--}}
+{{--                                                    <span class="price">$45.00</span>--}}
+{{--                                                </div>--}}
+{{--                                                <div class="product-reviews-summary">--}}
+{{--                                                    <div class="rating-summary">--}}
+{{--                                                        <div title="80%" class="rating-result">--}}
+{{--                                                                    <span style="width:80%">--}}
+{{--                                                                        <span><span>80</span>% of <span>100</span></span>--}}
+{{--                                                                    </span>--}}
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="product-item  product-item-opt-1 ">--}}
+{{--                                    <div class="product-item-info">--}}
+{{--                                        <div class="product-item-photo">--}}
+{{--                                            <a class="product-item-img" href=""><img alt="product name" src="{{asset('frontend/images/media/index1/sellers2.jpg')}}"></a>--}}
+{{--                                            <div class="product-item-actions">--}}
+{{--                                                <a class="btn btn-wishlist" href=""><span>wishlist</span></a>--}}
+{{--                                                <a class="btn btn-compare" href=""><span>compare</span></a>--}}
+{{--                                                <a class="btn btn-quickview" href=""><span>quickview</span></a>--}}
+{{--                                            </div>--}}
+{{--                                            <button type="button" class="btn btn-cart"><span>Add to Cart</span></button>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="product-item-detail">--}}
+{{--                                            <strong class="product-item-name"><a href="">Maecenas consequat mauris</a></strong>--}}
+{{--                                            <div class="clearfix">--}}
+{{--                                                <div class="product-item-price">--}}
+{{--                                                    <span class="price">$45.00</span>--}}
+{{--                                                </div>--}}
+{{--                                                <div class="product-reviews-summary">--}}
+{{--                                                    <div class="rating-summary">--}}
+{{--                                                        <div title="80%" class="rating-result">--}}
+{{--                                                                    <span style="width:80%">--}}
+{{--                                                                        <span><span>80</span>% of <span>100</span></span>--}}
+{{--                                                                    </span>--}}
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="product-item  product-item-opt-1 ">--}}
+{{--                                    <div class="product-item-info">--}}
+{{--                                        <div class="product-item-photo">--}}
+{{--                                            <a class="product-item-img" href=""><img alt="product name" src="{{asset('frontend/images/media/index1/sellers3.jpg')}}"></a>--}}
+{{--                                            <div class="product-item-actions">--}}
+{{--                                                <a class="btn btn-wishlist" href=""><span>wishlist</span></a>--}}
+{{--                                                <a class="btn btn-compare" href=""><span>compare</span></a>--}}
+{{--                                                <a class="btn btn-quickview" href=""><span>quickview</span></a>--}}
+{{--                                            </div>--}}
+{{--                                            <button type="button" class="btn btn-cart"><span>Add to Cart</span></button>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="product-item-detail">--}}
+{{--                                            <strong class="product-item-name"><a href="">Maecenas consequat mauris</a></strong>--}}
+{{--                                            <div class="clearfix">--}}
+{{--                                                <div class="product-item-price">--}}
+{{--                                                    <span class="price">$45.00</span>--}}
+{{--                                                </div>--}}
+{{--                                                <div class="product-reviews-summary">--}}
+{{--                                                    <div class="rating-summary">--}}
+{{--                                                        <div title="80%" class="rating-result">--}}
+{{--                                                                    <span style="width:80%">--}}
+{{--                                                                        <span><span>80</span>% of <span>100</span></span>--}}
+{{--                                                                    </span>--}}
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
 
-                                        </div>
-                                    </div>
-                                </div>
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
                             </div>
                         </div><!-- tab 1 -->
                         <!-- tab 2 -->
