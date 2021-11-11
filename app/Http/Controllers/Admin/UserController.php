@@ -26,8 +26,8 @@ class UserController extends Controller
         $data['password_confirmation'] = bcrypt($request->password_confirmation);
         $user = User::create($data);
         if($user){
-            $user->role()->sync($roles);
-            return redirect('/user')->with('success','User created Successfully!');
+            $user->roles()->sync($roles);
+            return redirect()->route('user')->with('success','User created Successfully!');
 
         }else{
             return redirect()->route('user')->with('error','User cannot be Created!');
@@ -41,17 +41,17 @@ class UserController extends Controller
     public function edit($id)
     {
         $roles = Role::all();
-        $users = User::where('id',$id)->with('role')->first();
-        $checkedroles = $users->role->pluck('id')->toArray();
+        $users = User::where('id',$id)->with('roles')->first();
+        $checkedroles = $users->roles->pluck('id')->toArray();
         return view('admin.user.edit',compact('users','roles','checkedroles'));
     }
     public function update(Request $request,$id)
     {
-        $users = User::where('id',$id)->with('role')->first();
+        $users = User::where('id',$id)->with('roles')->first();
         $data = $request->except('_token','image','password');
         $data['password'] = bcrypt($request->password);
         $users->update($data);
-        $users->role()->sync($request->role);
+        $users->roles()->sync($request->role);
         return redirect()->route('user')->with('success','User updated successfully!');
     }
     public function destroy($id)
@@ -69,6 +69,11 @@ class UserController extends Controller
 
 
     public function change_password(ChangePasswordRequest $request){
+
+         $user = auth()->user();
+        if (Hash::check($request->input('old_password'), $user->password)) {
+
+        }
         $old_password  = auth()->user()->password;
 
         $oldpass = ($request->oldpassword);

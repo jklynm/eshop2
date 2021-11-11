@@ -33,10 +33,10 @@ class HomeController extends Controller
         $data = $request->except('_token');
         $contacts = Contact::create($data);
         if($contacts){
-            return redirect()->route('contact.index')->withInput()->with('success','Informations Submitted Successfully!');
+            return redirect()->route('contact.getform')->withInput()->with('success','Informations Submitted Successfully!');
         }else{
-            return redirect()->route('contact.index')->with('error','Informations cannot be Submitted!');
+            return redirect()->route('contact.getform')->with('error','Informations cannot be Submitted!');
         }
+     }
 
-    }
 }

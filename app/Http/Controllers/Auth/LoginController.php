@@ -14,31 +14,33 @@ class LoginController extends Controller
 
     public function  __construct()
     {
-        $this->middleware('guest:web')->except('logout');
+        $this->middleware('guest:web')->except(['logout','customerlogout']);
     }
     public function index(){
         return view('auth.login');
     }
-    public function logout(Request $request){
+    public function logout(Request $request)
+    {
+       $user = Auth::user();
        $this->guard()->logout();
        $request->session()->flush();
        $request->session()->regenerate();
-       return redirect('admin/login');
-
+            return redirect('admin/login');
     }
+
     public function login(Request $request){
-        if(session()->has('email') && session()->has('name'))
-        {
-//            return redirect('admin/dashboard');
-            return redirect()->route('dashboard');
-        }
+//        dd($request->all());
+//        if(session()->has('email') && session()->has('name'))
+//        {
+////            return redirect('admin/dashboard');
+//            return redirect()->route('dashboard');
+//        }
         if(auth()->attempt(['email'=>$request->email,'password'=>$request->password]))
         {
             $user = Auth::user();
             session(['user_id'=>$user->id]);
             session(['email'=>$user->email]);
             session(['name'=>$user->name]);
-
             $roles1 = $user->roles;
             $roles = collect();
             $permissions = collect();
@@ -54,13 +56,13 @@ class LoginController extends Controller
             {
                 $access_permissions[] = $permission->guard_name;
             }
+//            dd($access_permissions);
             session()->put('access_permissions',$access_permissions);
             session()->put('roles',$roles);
-           return  redirect()->route('dashboard');
+            return  redirect()->route('dashboard');
+
         }else{
-            return redirect()->route('login');
+            return redirect()->back();
         }
     }
-
-
 }

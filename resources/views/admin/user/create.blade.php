@@ -86,6 +86,11 @@
                                             <input type="file" class="form-control"  name="image" placeholder="Enter Image">
                                         </div>
                                         <div class="form-group">
+                                            <label for="exampleInputStatus">Is Admin</label> <br>
+                                            <input type="radio"  name="is_admin" value="0"> Disable
+                                            <input type="radio" name="is_admin" value="1"> Enable
+                                        </div>
+                                        <div class="form-group">
                                             <label for="exampleInputStatus">Status</label> <br>
                                             <input type="radio"  name="status" value="0"> Disable
                                             <input type="radio" name="status" value="1"> Enable

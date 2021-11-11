@@ -21,7 +21,7 @@ class RoleController extends Controller
         $permissions = $request->permission;
         $role = Role::create($data);
         if($role){
-            $role->permission()->sync($permissions);
+               $role->permissions()->sync($permissions);
             return redirect()->route('role')->with('success','User Role created Successfully!');
         }else{
             return redirect()->route('role')->with('error','User Role cannot be Created!');

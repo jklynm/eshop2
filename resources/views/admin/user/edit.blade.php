@@ -58,14 +58,14 @@
                                             <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputPassowrd">Password</label>
-                                            <input type="password" id="pwdInput" class="form-control @error('password') is-invalid @enderror" value="{{$users->password}}" name="password" placeholder="Enter Password">
-                                            <input type="checkbox" id="checkbox" onclick="pwdFunction()"> Show Password
-                                            @error('password')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
+{{--                                        <div class="form-group">--}}
+{{--                                            <label for="exampleInputPassowrd">Password</label>--}}
+{{--                                            <input type="password" id="pwdInput" class="form-control @error('password') is-invalid @enderror" value="{{$users->password}}" name="password" placeholder="Enter Password">--}}
+{{--                                            <input type="checkbox" id="checkbox" onclick="pwdFunction()"> Show Password--}}
+{{--                                            @error('password')--}}
+{{--                                            <div class="alert alert-danger">{{ $message }}</div>--}}
+{{--                                            @enderror--}}
+{{--                                        </div>--}}
                                         <script>
                                             function pwdFunction() {
                                                 var x = document.getElementById("pwdInput");
@@ -87,6 +87,11 @@
                                         <div class="form-group">
                                             <label for="exampleInputImage">Image</label>
                                             <input type="file" class="form-control" name="image" placeholder="Enter Image">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputStatus">Is Admin</label> <br>
+                                            <input type="radio"  name="is_admin" value="0" {{ ($users->is_admin=="0")? "checked" : "" }} > Disable
+                                            <input type="radio" name="is_admin" value="1" {{ ($users->is_admin=="1")? "checked" : "" }}> Enable
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputStatus">Status</label> <br>

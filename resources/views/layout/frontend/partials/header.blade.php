@@ -17,12 +17,16 @@
                             <li><a href="">My Account</a></li>
                             <li><a href="">Checkout</a></li>
                             <li><a href="">Compare</a></li>
-                            <li><a href="">Login/Register</a></li>
+                            @if(!Auth::check())
+                            <li><a href="{{route('loginCustomer')}}">Login/Register</a></li>
+                            @else
+                            <li><a href="{{route('customer.logout')}}">Logout</a></li>
+                            @endif
                         </ul>
                     </div>
                 </li>
                 <li><a href="" >Services</a></li>
-                <li><a href="{{route('contact.index')}}">Contact </a></li>
+                <li><a href="{{route('contact.getform')}}">Contact </a></li>
             </ul><!-- nav-right -->
         </div>
     </div><!-- header-top -->
@@ -365,7 +369,7 @@
                         <li><a href="shop.html">Category </a></li>
                         <li><a href="compare.html">compare</a></li>
                         <li><a href="single.html">single</a></li>
-                        <li><a href="{{route('contact.index')}}"> contact </a></li>
+                        <li><a href="{{route('contact.getform')}}"> contact </a></li>
                     </ul>
                 </div><!-- menu -->
                 <!-- mini cart -->
@@ -491,7 +495,8 @@
                             <li><a href="">My Account</a></li>
                             <li><a href="">Checkout</a></li>
                             <li><a href="">Compare</a></li>
-                            <li><a href="">Login/Register</a></li>
+                            <li><a href="{{route('loginCustomer')}}">Login/Register</a></li>
+                            <li><a href="{{route('customer.logout')}}">Logout</a></li>
                         </ul>
                     </div>
                 </div><!--setting  -->

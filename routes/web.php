@@ -14,13 +14,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [App\Http\Controllers\Frontend\HomeController::class, 'home'])->name('frontend.index');
-Route::get('/contact', [App\Http\Controllers\Frontend\HomeController::class, 'contact'])->name('contact.index');
+Route::get('/contact', [App\Http\Controllers\Frontend\HomeController::class, 'contact'])->name('contact.getform');
 Route::post('/contactStore', [App\Http\Controllers\Frontend\HomeController::class, 'contactstore'])->name('contact.store');
-
 
 //Route::get('abc', function(){
 //    return view('layout.test.test');
 //});
+
+Route::get('/frontend/customer/login', [App\Http\Controllers\Auth\Customer\LoginController::class, 'loginCustomer'])->name('loginCustomer');
+Route::post('/frontend/customer/loginSubmit', [App\Http\Controllers\Auth\Customer\LoginController::class, 'loginCustomerSubmit'])->name('loginCustomer.submit');
+
+Route::middleware(['auth'])->prefix('customer')->group(function() {
+    Route::get('/dashboard', [App\Http\Controllers\Frontend\CustomerDashboardController::class, 'dashboardCustomer'])->name('customer.dashboard');
+    Route::get('/logout1', [App\Http\Controllers\Auth\Customer\LoginController::class, 'customerlogout'])->name('customer.logout');
+});
+
 
 Route::get('/admin/login', [App\Http\Controllers\Auth\LoginController::class, 'index'])->name('login');
 Route::post('/admin/loginSubmit', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login.submit');
@@ -65,7 +73,15 @@ Route::middleware(['auth'])->prefix('admin')->group(function(){
     Route::post('/sliderUpdate/{slider}', [App\Http\Controllers\Admin\SliderController::class, 'update'])->name('slider.update');
     Route::get('/sliderDelete/{slider}', [App\Http\Controllers\Admin\SliderController::class, 'destroy'])->name('slider.delete');
 
+    Route::get('/page', [App\Http\Controllers\Admin\PageController::class, 'index'])->name('page.index');
+    Route::get('/pageCreate', [App\Http\Controllers\Admin\PageController::class, 'create'])->name('page.create');
+    Route::post('/pageStore', [App\Http\Controllers\Admin\PageController::class, 'store'])->name('page.store');
+    Route::get('/pageEdit/{page}', [App\Http\Controllers\Admin\PageController::class, 'edit'])->name('page.edit');
+    Route::post('/pageUpdate/{page}', [App\Http\Controllers\Admin\PageController::class, 'update'])->name('page.update');
+    Route::get('/pageDelete/{page}', [App\Http\Controllers\Admin\PageController::class, 'destroy'])->name('page.delete');
+
     Route::get('/contact', [App\Http\Controllers\Admin\ContactController::class, 'index'])->name('contact.index');
+    Route::get('/contactShow/{contact}', [App\Http\Controllers\Admin\ContactController::class, 'show'])->name('contact.show');
 
 
     Route::get('/product', [App\Http\Controllers\Admin\ProductController::class, 'index'])->name('product');

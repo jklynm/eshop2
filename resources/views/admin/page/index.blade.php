@@ -44,12 +44,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Contacts</h1>
+                        <h1>Pages</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Manage Contacts </li>
+                            <li class="breadcrumb-item active">Manage Pages </li>
                         </ol>
                     </div>
                 </div>
@@ -58,7 +58,7 @@
         @include('layout.alert')
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Manage Contacts </h3>
+                <h3 class="card-title">Manage Page &nbsp; &nbsp; <a href="{{route('page.create')}}"><button class="btn btn-success"><i class="fa fa-pen"></i> Add Page</button></a></h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -66,37 +66,45 @@
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Subject</th>
+                        <th>Title</th>
+                        <th>Subtitle</th>
+                        <th>Image</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($contacts as $index=>$val)
+                    @foreach($pages as $index=>$val)
                         <tr>
                             <td>{{$index+1}}</td>
-                            <td>{{$val->name}}</td>
-                            <td>{{$val->email}}</td>
-                            <td>{{$val->phone}}</td>
-                            <td>{{$val->subject}}</td>
+                            <td>{{$val->title}}
+                            </td>
+                            <td>{{$val->subtitle}}</td>
+                            <td>
+                                @if(file_exists('storage/'.$val->image) && $val->image !== '' && $val->image !== null)
+                                    <img src="{{asset('storage/'.$val->image)}}" height="70">
+
+                                @else
+                                    <img src="{{asset('frontend/images/dummy.jpg')}}" style="border:solid 1px #ddd;">
+
+                                @endif
+                            </td>
                             <td>@if($val->status == 0)
                                     <button class="btn btn-danger">Disable</button>
                                 @else <button class="btn btn-success">Enable</button>
                                 @endif</td>
-                            <td><a class="btn btn-info" href="{{route('contact.show',$val->id)}}"><i class="fa fa-eye"></i></a> &nbsp; <a href="#" class="btn btn-danger"><i class="fa fa-times" data-toggle="modal" data-target="#exampleModal-{{$index}}"></i></a></td>
+                            {{-- <td><a class="btn btn-info" href="{{route('category.edit',$val->slug)}}"><i class="fa fa-edit"></i></a> &nbsp; <a href="#" class="btn btn-danger"><i class="fa fa-times" data-toggle="modal" data-target="#exampleModal-{{$index}}"></i></a></td>--}}
+                            <td><a class="btn btn-info" href="{{route('page.edit',$val->id)}}"><i class="fa fa-edit"></i></a> &nbsp; <a href="#" class="btn btn-danger"><i class="fa fa-times" data-toggle="modal" data-target="#exampleModal-{{$index}}"></i></a></td>
                         </tr>
                     @endforeach
+
                     </tbody>
                     <tfoot>
                     <tr>
                         <th>ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Subject</th>
+                        <th>Title</th>
+                        <th>Subtitle</th>
+                        <th>Image</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
@@ -106,22 +114,22 @@
             <!-- /.card-body -->
         </div>
     </div>
-    @foreach($contacts as $index=>$val)
+    @foreach($pages as $index=>$val)
         <div class="modal fade" id="exampleModal-{{$index}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Delete Category</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Delete Page</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p>Are you sure to delete this category?</p>
+                        <p>Are you sure to delete this Page?</p>
                     </div>
                     <div class="modal-footer">
-                        <a href="{{route('category')}}"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button></a>
-                        <a href="{{route('category.delete',$val->id)}}"><button type="button" class="btn btn-primary">Delete</button></a>
+                        <a href="{{route('page.index')}}"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button></a>
+                        <a href="{{route('page.delete',$val->id)}}"><button type="button" class="btn btn-primary">Delete</button></a>
                     </div>
                 </div>
             </div>

@@ -11,48 +11,25 @@ class CategoryController extends Controller
 {
     public function index()
     {
+        $this->authorize('view-category');
         $categories = Category::orderBy('id', 'DESC')->get();
         return view('admin.category.index',compact('categories'));
     }
 
     public function create()
     {
-
-        $categories = $this->getCategoryListDropDown();
-        return view('admin.category.create',compact('categories'));
+        $this->authorize('create-category');
+        $parents = Category::whereNull('parent_id')->with('allCategories')->get();
+        return view('admin.category.create',compact('parents'));
     }
 
 
-    public function  getCategoryListDropDown()
-    {
-        $categories = Category::where('parent_id',0)->get();
-        $selectBox = '';
-        foreach ($categories as $category)
-        {
-            $selectBox .= '<option value = "'.$category->id.'">'.$category->title.'</option>';
-            $selectBox .= $this->getSubCategoryListDropDown($category);
-        }
-        return $selectBox;
-    }
 
-    public function getSubCategoryListDropDown($category,$level=1)
-    {
-        $selectBox = '';
-        if($category->subCategories)
-        {
-             $level++;
-            foreach ($category->subCategories as $subCategory)
-            {
-                $title = str_repeat('-',$level).$subCategory->title;
-                $selectBox .= '<option value = "'.$subCategory->id.'">'.$title.'</option>';
-                $selectBox .= $this->getSubCategoryListDropDown($subCategory,$level);
-            }
-            return $selectBox;
-        }
-    }
+
 
     public function store(StoreRequest $request)
     {
+        $this->authorize('create-category');
         $data = $request->except('_token');
         $category = Category::create($data);
         if($category){
@@ -65,14 +42,19 @@ class CategoryController extends Controller
     public function edit($id)
 //        public function edit($slug)
     {
+        $this->authorize('edit-category');
         $category = Category::where('id',$id)->first();
 //        $category = Category::where('slug',$slug)->first();
-        $categories = $this->getCategoryListDropDown();
-        return view('admin.category.edit',compact('category','categories'));
+        $patenr= Category::where('id', '!=', $id)->with('allCategories')->whereNull('parent_id')->get();
+//        dd($patenr);
+        $parents =  $patenr->where('parent_id', '!=', $id)->all();
+//        dd($parents);
+        return view('admin.category.edit',compact('category','parents'));
     }
 
-    public function update(UpdateRequest $request,$id)
+    public function update(Request $request,$id)
     {
+        $this->authorize('edit-category');
         $category = Category::where('id',$id)->first();
         $data = $request->except('_token','status');
         $category->update($data);
@@ -82,6 +64,7 @@ class CategoryController extends Controller
 
     public function destroy($id)
     {
+        $this->authorize('delete-category');
         $category = Category::where('id',$id)->first();
         $category->delete();
         return redirect()->route('category');

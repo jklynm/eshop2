@@ -37,8 +37,6 @@
                             <span class="fas fa-envelope"></span>
                         </div>
                     </div>
-
-
                     <strong style="color: red;"></strong>
 
 

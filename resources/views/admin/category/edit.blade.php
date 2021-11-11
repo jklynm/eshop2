@@ -23,7 +23,7 @@ adasflaskdf
             </div><!-- /.container-fluid -->
         </section>
     @include('layout.alert')
-        <!-- Main content -->
+    <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
@@ -42,8 +42,8 @@ adasflaskdf
                                     <div class="form-group">
                                         <label for="exampleInputParent">Parent</label>
                                         <select name="parent_id" class="form-control">
-                                            <option value="0">Select Itself</option>
-                                            {!! $categories !!}
+                                            <option value="" {{ ($category->parent_id == NULL) ? "selected" : "" }}>Parent Itself</option>
+                                            @include('admin.category.recursive_options', ['parents' => $parents, 'selected_id' => $category->parent_id])
                                         </select>
                                     </div>
                                     <div class="form-group">

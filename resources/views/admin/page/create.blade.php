@@ -6,12 +6,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Categories</h1>
+                        <h1>Pages</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Create Category </li>
+                            <li class="breadcrumb-item active">Create Page </li>
                         </ol>
                     </div>
                 </div>
@@ -26,23 +26,15 @@
                         <!-- general form elements -->
                         <div class="card card-primary">
                             <div class="card-header" style="background: #fff;color:#333">
-                                <h3 class="card-title">Add New Category &nbsp; &nbsp; <a href="{!! route('category') !!}"><button class="btn btn-success"><i class="fa fa-pen"></i> Manage Category</button></a></h3>
+                                <h3 class="card-title">Add New Page &nbsp; &nbsp; <a href="{{route('page.index')}}"><button class="btn btn-success"><i class="fa fa-pen"></i> Manage Page</button></a></h3>
                             </div>
                         @include('layout.alert')
                         <!-- /.card-header -->
                             <!-- form start -->
                             <div class="class col-md-6">
-                                <form method="post" action="{{route('category.store')}}" enctype="multipart/form-data">
+                                <form method="post" action="{{route('page.store')}}" enctype="multipart/form-data">
                                     @csrf
                                     <div class="card-body">
-                                        <div class="form-group">
-                                            <label for="exampleInputParent">Parent</label>
-                                            <select name="parent_id" class="form-control">
-                                                <option value="">Select Itself</option>
-
-                                                @include('admin.category.recursive_options', ['parents' => $parents, 'selected_id' => ""])
-                                            </select>
-                                        </div>
                                         <div class="form-group">
                                             <label for="exampleInputName">Title</label>
                                             <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" placeholder="Enter Title">
@@ -55,21 +47,12 @@
                                             <input type="text" class="form-control" name="subtitle" placeholder="Enter Subtitle">
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleInputContact">Rank</label>
-                                            <input type="number" class="form-control"  name="rank" placeholder="Enter Rank Number">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputAddress">Font Icon</label>
-                                            <input type="text" class="form-control" name="icon" placeholder="Enter Font Icon">
+                                            <label for="exampleInputImage">Description</label>
+                                            <textarea name="description"  class="form-control"  id="" cols="30" rows="10"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputImage">Image</label>
                                             <input type="file" class="form-control"  name="image" placeholder="Enter Image">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputStatus">Display on Menu</label> <br>
-                                            <input type="radio" name="approve" value="1" checked> Enable
-                                            <input type="radio"  name="approve" value="0"> Disable
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputStatus">Status</label> <br>

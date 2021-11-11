@@ -13,4 +13,11 @@ class ContactController extends Controller
         $contacts = Contact::get();
      return view('admin.contact.index', compact('contacts'));
     }
+    public function show($id)
+    {
+        $contact = Contact::find($id);
+        $attribute['status'] = 1;
+        $contact->update($attribute);
+        return view('admin.contact.show', compact('contact'));
+    }
 }

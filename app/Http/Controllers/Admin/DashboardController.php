@@ -26,6 +26,7 @@ class DashboardController extends Controller
 //            dd(session()->get('access_permissions'));
 //            dd('adsf');
 //        }
+        $this->authorize('manage-admin-dashboard');
         $categories = Category::all();
         $users = User::all();
         $products = Product::all();

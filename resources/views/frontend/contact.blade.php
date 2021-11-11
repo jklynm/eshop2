@@ -11,6 +11,7 @@
             <h2 class="page-heading">
                 <span class="page-heading-title2">Contact Us</span>
             </h2>
+            @include('layout.alert')
             <div class="page-content" id="contact">
                 <div class="row">
                     <div class="col-sm-6">
